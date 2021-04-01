@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce',
-    'notepad',
+    'notepad.apps.NotepadConfig',
 ]
 
 MIDDLEWARE = [
