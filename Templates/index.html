@@ -15,7 +15,7 @@
                     <ul>
                         <li><a href="">Home</a></li>
                         {% if user.is_authenticated %}
-                        <li><a style="color: #f12a47; font-size: 40px">Hello, {{user.username}}</a></li>
+                        <li><a style="color: blue; font-size: 40px">Hello, {{user.username}}</a></li>
                         <li><a href="accounts/logout">Logout</a></li>
                         {% else %}
                         <li><a href="accounts/login">Log in</a></li>
