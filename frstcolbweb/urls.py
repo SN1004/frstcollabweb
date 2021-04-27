@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('notepad.urls')),
     path('accounts/',include('accounts.urls')),
+    path('polls/',include('polls.urls')),
 ]
