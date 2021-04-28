@@ -1,0 +1,6 @@
+psycopy2
+django
+pyhton3 
+tinymce
+postgresql
+pgadmin4 
