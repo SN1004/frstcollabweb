@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
+from django.db.models import F
 from .models import Choice, Question
 
 
@@ -28,14 +28,14 @@ def polls(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
     return render(request, 'polls.html', context)
-
+"""
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'detail.html', {'question': question})
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'results.html', {'question': question})
+    return render(request, 'results.html', {'question': question})"""
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -48,8 +48,8 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
+        # Using F() to aviod race condtions.
+        selected_choice.update(votes = F('votes')+1)
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
